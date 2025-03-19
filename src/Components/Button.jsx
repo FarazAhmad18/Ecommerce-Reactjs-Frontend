@@ -1,13 +1,11 @@
-import React from "react";
-const Button = ({ children, onClick, className = "" }) => {
+import React from 'react'
+
+const Button = ({children,onClick,className}) => {
   return (
-    <button
-      onClick={onClick}
-      className={`px-4 py-2 bg-primary text-white rounded hover:bg-primary transition ${className}`}
-    >
+    <button className={`px-4 py-2 bg-black text-white rounded ${className}`} onClick={onClick}>
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

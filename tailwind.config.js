@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Add custom color here
-        primary: "#DB4444",       // You can name it anything
+        // Added custom color here
+        primary: "#E97575",     
         secondary: "#F59E0B",
         softGray: "#f3f4f6"
       },
