@@ -75,7 +75,7 @@ const TodaysCard = () => {
   return (
     <div className="mt-12 px-6 mb-12">
       <Heading>Our Products</Heading>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 lg:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:grid-cols-4 mt-12 px-6 mb-12 max-w-screen-xl mx-auto">
         {cardContent.map((i) => {
           return(
           <Card
