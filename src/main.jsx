@@ -1,14 +1,22 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { store } from './store.js'
-import { Provider } from 'react-redux'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { store } from './store.js';
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <Provider store={store}>
+    <Provider store={store}>
       <App />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        pauseOnHover
+        theme="light"
+      />
     </Provider>
-  </StrictMode>,
-)
+  </StrictMode>
+);

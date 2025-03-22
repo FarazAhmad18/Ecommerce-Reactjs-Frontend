@@ -9,6 +9,7 @@ import About from './Pages/About';
 import Productdetail from './Pages/Productdetail';
 import WishlistPage from './Pages/WishlistPage';
 import ErrorNotFound from './Pages/ErrorNotFound';
+import ContactPage from './Pages/ContactPage'
 const router = createBrowserRouter([
   {
     path:'/',
@@ -41,6 +42,16 @@ const router = createBrowserRouter([
     ])
   },
   {
+    path:'/contact',
+    element:([
+      <div>
+        <Navbar/>
+        <ContactPage/>
+        <Footer/>
+      </div>
+    ])
+  },
+  {
     path:'/productdetail',
     element:([
       <div>
@@ -61,7 +72,7 @@ const router = createBrowserRouter([
     )
   },
   {
-    path:'/NotFoundError',
+    path:'*',
     element:(
       <div>
         <Navbar/>

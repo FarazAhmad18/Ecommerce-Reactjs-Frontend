@@ -1,10 +1,14 @@
 // src/components/Navbar.jsx
 import React, { useState } from 'react';
-import { FaShoppingCart, FaHeart, FaUser, FaBars, FaTimes, FaSearch } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { FaHeart, FaUser, FaBars, FaTimes} from 'react-icons/fa';
+import { BsCart } from "react-icons/bs";
+
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const cartItems = useSelector((state) => state.cart.cartItems);
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -14,17 +18,27 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex space-x-6 text-sm font-medium text-gray-700 ml-6">
-          <a href="/" className="hover:text-red-600">Home</a>
-          <a href="/about" className="hover:text-red-600">About</a>
-          <a href="/contact" className="hover:text-red-600">Contact</a>
-          <a href="/signup" className="hover:text-red-600">Sign Up</a>
+        <nav className="hidden md:flex space-x-6 text-basefont-light text-gray-700 ml-6">
+          <NavLink to="/" className={({isActive})=>isActive?'text-red-500':''}>Home</NavLink>
+          <NavLink to="/about" className={({isActive})=>isActive? 'text-red-500':"text-gray-700"}>About</NavLink>
+          <NavLink to="/contact" className={({isActive})=>isActive?'text-red-500':''}>Contact</NavLink>
+          <NavLink to="/signup" className={({isActive})=>isActive?'text-red-500':''}>Sign Up</NavLink>
         </nav>
 
         {/* Action Icons */}
         <div className="hidden md:flex items-center space-x-5 text-gray-700 ml-6">
           <FaHeart className="hover:text-red-600 cursor-pointer" />
-          <FaShoppingCart className="hover:text-red-600 cursor-pointer" />
+         {/* <NavLink to="/cart"> <BsCart className="hover:text-red-600 font-bold cursor-pointer" /></NavLink> */}
+         <NavLink to="/cart" className="relative">
+            <BsCart className="hover:text-red-600 font-bold cursor-pointer text-xl" />
+            
+            {/* ✅ Cart Count Badge */}
+            {cartItems.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full animate-bounce">
+                {cartItems.length}
+              </span>
+            )}
+          </NavLink>
           <FaUser className="hover:text-red-600 cursor-pointer" />
         </div>
 
@@ -41,15 +55,15 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t px-6 py-4 space-y-4 text-sm text-gray-700 font-medium">
 
           {/* Links */}
-          <a href="/" className="block hover:text-red-600">Home</a>
-          <a href="/about" className="block hover:text-red-600">About</a>
-          <a href="/contact" className="block hover:text-red-600">Contact</a>
-          <a href="/signup" className="block hover:text-red-600">Sign Up</a>
+          <NavLink to="/" className={({isActive})=>isActive?'text-red-500':''}>Home</NavLink>
+          <NavLink to="/about" className={({isActive})=>isActive? 'text-red-500':"text-gray-700"}>About</NavLink>
+          <NavLink to="/contact" className={({isActive})=>isActive?'text-red-500':''}>Contact</NavLink>
+          <NavLink to="/signup" className={({isActive})=>isActive?'text-red-500':''}>Sign Up</NavLink>
 
           {/* Icons */}
           <div className="flex space-x-5 pt-4 border-t text-lg">
             <FaHeart className="hover:text-red-600 cursor-pointer" />
-            <FaShoppingCart className="hover:text-red-600 cursor-pointer" />
+            <BsCart className="hover:text-red-600 cursor-pointer" />
             <FaUser className="hover:text-red-600 cursor-pointer" />
           </div>
         </div>
