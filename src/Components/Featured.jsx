@@ -1,37 +1,39 @@
-import React from 'react'
-import Heading from './Heading'
-import g1 from '../assets/g1.png'
-import g2 from '../assets/g2.png'
-import g3 from '../assets/g3.png'
-import g4 from '../assets/g4.png'
+import React from 'react';
+import Heading from './Heading';
+import g1 from '../assets/g1.png';
+import g2 from '../assets/g2.png';
+import g3 from '../assets/g3.png';
+import g4 from '../assets/g4.png';
 
 const Featured = () => {
+  const featuredItems = [
+    { image: g1, span: 'col-span-2 row-span-2', maxHeight: 'max-h-64' },
+    { image: g2, span: 'col-span-2 row-span-1', maxHeight: 'max-h-64' },
+    { image: g3, span: 'col-span-1 row-span-1' },
+    { image: g4, span: 'col-span-1 row-span-1' }
+  ];
+
   return (
     <div>
-      <Heading className='ml-6' children={"Featured"}/>
-      <h1 className='text-3xl font-bold ml-6 mt-10 sm:text-4xl'>New Arrival</h1>
-{/* grid */}
-      <div className='grid grid-cols-4 grid-rows-2 gap-6 p-6 max-w-6xl mx-auto mt-6'>
-        <div className='col-span-2 row-span-2 rounded-lg bg-black shadow-lg flex items-center justify-center p-2'>
-        <img src={g1} alt=""
-        className='h-full w-full max-h-64 object-contain ' />  
-        </div>
-        <div className='col-span-2 row-span-1 rounded-lg bg-black flex items-center justify-center p-2'>
-        <img src={g2} alt=""
-        className='h-full w-full max-h-64 object-contain' />  
-        </div>
-        <div className='col-span-1 row-span-1 rounded-lg bg-black flex items-center justify-center p-2'>
-        <img src={g3} alt=""
-        className='h-full w-full object-contain'
-        />  
-        </div>
-        <div className='col-span-1 row-span-1 rounded-lg bg-black flex items-center justify-center p-2'>
-        <img src={g4} alt="" 
-        className='h-full w-full object-contain'/>  
-        </div>
+      <Heading className='ml-6'>Featured</Heading>
+      <h1 className='mt-10 ml-6 text-3xl font-bold sm:text-4xl'>New Arrival</h1>
+      
+      <div className='grid max-w-6xl grid-cols-4 grid-rows-2 gap-6 p-6 mx-auto mt-6'>
+        {featuredItems.map((item, index) => (
+          <div 
+            key={index}
+            className={`${item.span} rounded-lg bg-black shadow-lg flex items-center justify-center p-2`}
+          >
+            <img 
+              src={item.image} 
+              alt="" 
+              className={`h-full w-full ${item.maxHeight || ''} object-contain`} 
+            />  
+          </div>
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Featured
+export default Featured;

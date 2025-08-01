@@ -1,23 +1,42 @@
-// src/components/Footer.jsx
 import React from 'react';
 
 const Footer = () => {
+  const links = {
+    quickLinks: [
+      { text: "Privacy Policy", href: "#" },
+      { text: "Terms of Service", href: "#" },
+      { text: "Return Policy", href: "#" },
+      { text: "Shipping Info", href: "#" }
+    ],
+    support: [
+      { text: "Contact Us", href: "#" },
+      { text: "FAQ", href: "#" },
+      { text: "Order Tracking", href: "#" },
+      { text: "Help Center", href: "#" }
+    ],
+    social: [
+      { text: "Facebook", href: "#" },
+      { text: "Instagram", href: "#" },
+      { text: "Twitter", href: "#" }
+    ]
+  };
+
   return (
-    <footer className="bg-gray-900 text-white py-12 mt-16">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="py-12 mt-16 text-white bg-gray-900">
+      <div className="grid grid-cols-1 gap-10 px-6 mx-auto max-w-7xl sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand Info */}
         <div>
-          <h2 className="text-2xl font-bold mb-3">Exclusive</h2>
+          <h2 className="mb-3 text-2xl font-bold">Exclusive</h2>
           <p className="text-sm text-gray-400">Subscribe to get 10% off your first order and stay updated.</p>
-          <form className="mt-4 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+          <form className="flex flex-col items-start gap-2 mt-4 sm:flex-row sm:items-center">
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-4 py-2 w-full sm:w-auto rounded bg-gray-800 text-sm border border-gray-700 focus:outline-none"
+              className="w-full px-4 py-2 text-sm bg-gray-800 border border-gray-700 rounded sm:w-auto focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-red-600 hover:bg-red-700 transition px-4 py-2 rounded text-sm"
+              className="px-4 py-2 text-sm transition bg-red-600 rounded hover:bg-red-700"
             >
               Subscribe
             </button>
@@ -26,43 +45,45 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+          <h3 className="mb-3 text-lg font-semibold">Quick Links</h3>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-white transition">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-white transition">Return Policy</a></li>
-            <li><a href="#" className="hover:text-white transition">Shipping Info</a></li>
+            {links.quickLinks.map((link, index) => (
+              <li key={index}>
+                <a href={link.href} className="transition hover:text-white">{link.text}</a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Customer Support */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Customer Support</h3>
+          <h3 className="mb-3 text-lg font-semibold">Customer Support</h3>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#" className="hover:text-white transition">Contact Us</a></li>
-            <li><a href="#" className="hover:text-white transition">FAQ</a></li>
-            <li><a href="#" className="hover:text-white transition">Order Tracking</a></li>
-            <li><a href="#" className="hover:text-white transition">Help Center</a></li>
+            {links.support.map((link, index) => (
+              <li key={index}>
+                <a href={link.href} className="transition hover:text-white">{link.text}</a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Get in Touch</h3>
+          <h3 className="mb-3 text-lg font-semibold">Get in Touch</h3>
           <ul className="space-y-2 text-sm text-gray-400">
             <li>Email: exclusive@gmail.com</li>
             <li>Phone: +88015-88888-9999</li>
             <li>Address: 123 Tech Street, City, Country</li>
           </ul>
-          <div className="flex space-x-4 mt-4">
-            <a href="#" className="hover:text-white transition">Facebook</a>
-            <a href="#" className="hover:text-white transition">Instagram</a>
-            <a href="#" className="hover:text-white transition">Twitter</a>
+          <div className="flex mt-4 space-x-4">
+            {links.social.map((link, index) => (
+              <a key={index} href={link.href} className="transition hover:text-white">{link.text}</a>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="mt-12 text-center text-sm text-gray-500 border-t border-gray-800 pt-6">
+      <div className="pt-6 mt-12 text-sm text-center text-gray-500 border-t border-gray-800">
         © {new Date().getFullYear()} Exclusive. All rights reserved.
       </div>
     </footer>
@@ -70,6 +91,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-

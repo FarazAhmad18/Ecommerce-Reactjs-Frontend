@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decreaseQuantity, increaseQuantity, calculateTotals } from '../redux/cartSlice';
+import { 
+  decreaseQuantity, 
+  increaseQuantity, 
+  calculateTotals 
+} from '../redux/cartSlice';
 import Button from '../Components/Button';
 
 const CartPage = () => {
@@ -12,8 +16,8 @@ const CartPage = () => {
   }, [cartItems, dispatch]);
 
   return (
-    <div className="mt-12 w-full max-w-6xl mx-auto px-4">
-      <table className="w-full border-separate border-spacing-y-4 text-sm sm:text-base">
+    <div className="w-full max-w-6xl px-4 mx-auto mt-12">
+      <table className="w-full text-sm border-separate border-spacing-y-4 sm:text-base">
         <thead>
           <tr className="bg-gray-100">
             <th className="px-4 py-2 text-left">Product</th>
@@ -24,14 +28,14 @@ const CartPage = () => {
         </thead>
         <tbody>
           {cartItems.map((item) => (
-            <tr key={item.id} className="bg-white shadow-sm rounded">
-              <td className="px-4 py-2 flex items-center gap-3">
-                <img src={item.image} alt={item.name} className="h-12 w-12 object-contain" />
-                <span>{item.name}</span>
+            <tr key={item.id} className="bg-white rounded shadow-sm">
+              <td className="flex items-center gap-3 px-4 py-2">
+                <img src={item.img} alt={item.title} className="object-contain w-12 h-12" />
+                <span>{item.title}</span>
               </td>
               <td className="px-4 py-2">Rs: {item.price}</td>
               <td className="px-4 py-2">
-                <div className="flex justify-center items-center gap-3">
+                <div className="flex items-center justify-center gap-3">
                   <span>{item.quantity}</span>
                   <div className="flex gap-1">
                     <Button onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
@@ -45,14 +49,18 @@ const CartPage = () => {
         </tbody>
       </table>
 
-      <div className="mt-10 flex flex-col md:flex-row justify-between items-start gap-5">
+      <div className="flex flex-col items-start justify-between gap-5 mt-10 md:flex-row">
         <div className="flex gap-2">
-          <input type="text" placeholder="Coupon Code" className="border pl-3 text-xl py-3" />
+          <input 
+            type="text" 
+            placeholder="Coupon Code" 
+            className="py-3 pl-3 text-xl border" 
+          />
           <Button>Apply Coupon</Button>
         </div>
 
-        <div className="p-4 border border-black space-y-2 w-full md:max-w-sm">
-          <p className="font-semibold text-lg">Cart Total</p>
+        <div className="w-full p-4 space-y-2 border border-black md:max-w-sm">
+          <p className="text-lg font-semibold">Cart Total</p>
           <div className="flex justify-between">
             <p>Sub Total</p>
             <p>Rs: {totalAmount}</p>

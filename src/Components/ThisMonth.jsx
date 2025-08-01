@@ -6,8 +6,6 @@ import prod8 from "../assets/8p.png";
 import prod9 from "../assets/9p.png";
 import prod6 from "../assets/6p.png";
 import Button from "./Button";
-// import prod5 from "../assets/5p.png";
-
 const TodaysCard = () => {
   const cardContent = [
     {
@@ -40,9 +38,9 @@ const TodaysCard = () => {
       },
   ];
   return (
-    <div className="mt-12 px-6 mb-12">
+    <div className="px-6 mt-12 mb-12">
       <Heading>Today's</Heading>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:grid-cols-4 mt-12 px-6 mb-12 max-w-screen-xl mx-auto">
+      <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-6 mx-auto mt-12 mb-12 md:grid-cols-2 lg:grid-cols-4">
         {cardContent.map((i) => {
           return(
           <Card
@@ -53,7 +51,7 @@ const TodaysCard = () => {
           />)
         })}
       </div>
-      <div className="w-2/3 border-b-2 border-gray-300 mx-auto mt-16"></div>
+      <div className="w-2/3 mx-auto mt-16 border-b-2 border-gray-300"></div>
 
     </div>
   );

@@ -7,13 +7,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainPage from './Pages/MainPage';
 import About from './Pages/About';
 import Productdetail from './Pages/Productdetail';
-import WishlistPage from './Pages/WishlistPage';
+import ProductsPage from './Pages/ProductsPage'; 
 import ErrorNotFound from './Pages/ErrorNotFound';
-import ContactPage from './Pages/ContactPage'
+import ContactPage from './Pages/ContactPage';
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:(
+    path: '/',
+    element: (
       <div>
         <Navbar/>
         <MainPage/>
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path:'/cart',
-    element:(
+    path: '/cart',
+    element: (
       <div>
         <Navbar/>
         <CartPage/>
@@ -32,48 +32,49 @@ const router = createBrowserRouter([
     )
   },
   {
-    path:'/about',
-    element:([
+    path: '/about',
+    element: (
       <div>
         <Navbar/>
         <About/>
         <Footer/>
       </div>
-    ])
+    )
   },
   {
-    path:'/contact',
-    element:([
+    path: '/contact',
+    element: (
       <div>
         <Navbar/>
         <ContactPage/>
         <Footer/>
       </div>
-    ])
+    )
   },
   {
-    path:'/productdetail',
-    element:([
+    path: '/products',
+    element: (
       <div>
         <Navbar/>
-        <Productdetail/>
-        <Footer/>
-      </div>
-    ])
-  },
-  {
-    path:'/wishlist',
-    element:(
-      <div>
-        <Navbar/>
-        <WishlistPage/>
+        <ProductsPage/>
         <Footer/>
       </div>
     )
   },
   {
-    path:'*',
-    element:(
+    path: '/products/:id',
+    element: (
+      <div>
+        <Navbar/>
+        <Productdetail/>
+        <Footer/>
+      </div>
+    )
+  },
+
+  {
+    path: '*',
+    element: (
       <div>
         <Navbar/>
         <ErrorNotFound/>
@@ -81,14 +82,12 @@ const router = createBrowserRouter([
       </div>
     )
   }
-])
+]);
 
 const App = () => {
   return (
-    <>
     <RouterProvider router={router}/>
-    </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
